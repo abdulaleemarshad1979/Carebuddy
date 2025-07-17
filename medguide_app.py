@@ -8,7 +8,7 @@ from collections import deque
 import datetime
 
 # ---------- Load API Key from Streamlit Secrets ----------
-api_key = st.secrets["OPENROUTER_API_KEY"]
+api_key = st.secrets["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"]
 
 if not api_key:
     st.error("❌ OpenRouter API key not found. Please add it to Streamlit Cloud Secrets.")
