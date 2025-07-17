@@ -1,6 +1,6 @@
 streamlit
-requests
-python-dotenv
-pillow
-pytesseract
 pdfplumber
+python-dotenv
+pytesseract
+Pillow
+requests

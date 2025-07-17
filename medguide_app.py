@@ -1,5 +1,5 @@
 import streamlit as st
-import fitz  # PyMuPDF
+import pdfplumber
 import requests
 from dotenv import load_dotenv
 import os
@@ -104,8 +104,12 @@ st.markdown(
 # ---------- Text Extraction Functions ----------
 @st.cache_data
 def extract_text_from_pdf(file):
-    doc = fitz.open(stream=file.read(), filetype="pdf")
-    text = "".join(page.get_text() for page in doc)
+    with pdfplumber.open(file) as pdf:
+        text = ''
+        for page in pdf.pages:
+            page_text = page.extract_text()
+            if page_text:
+                text += page_text + "\n"
     return text
 
 @st.cache_data
