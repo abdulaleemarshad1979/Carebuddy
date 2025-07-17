@@ -24,6 +24,10 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# ---------- Instant Visible Output to Prevent Stuck Cooking Screen ----------
+st.title("🩺 CareBuddy")
+st.info("👋 Welcome! Upload a report or ask your health-related question below.")
+
 # ---------- Custom CSS for Styling ----------
 st.markdown(
     """
@@ -36,14 +40,14 @@ st.markdown(
         /* Title and Subtitle Styling */
         .title {
             text-align: center;
-            color: #01579B; /* Deep, professional blue */
+            color: #01579B;
             font-size: 38px;
             font-weight: bold;
             padding-top: 20px;
         }
         .subtitle {
             text-align: center;
-            color: #546E7A; /* Softer, professional grey */
+            color: #546E7A;
             font-size: 18px;
             padding-bottom: 20px;
         }
@@ -53,7 +57,7 @@ st.markdown(
 
         /* Chat Bubble Styling */
         .bubble-user {
-            background-color: #0288D1; /* User message blue */
+            background-color: #0288D1;
             color: white;
             padding: 12px;
             border-radius: 20px 20px 5px 20px;
@@ -64,8 +68,8 @@ st.markdown(
             clear: both;
         }
         .bubble-bot {
-            background-color: #ECEFF1; /* Bot message light grey */
-            color: #111111; /* Dark text for readability */
+            background-color: #ECEFF1;
+            color: #111111;
             padding: 12px;
             border-radius: 20px 20px 20px 5px;
             margin: 8px 0;
@@ -80,8 +84,7 @@ st.markdown(
             gap: 15px;
             padding-bottom: 20px;
         }
-        
-        /* Sidebar button styling */
+
         .stButton>button {
             width: 100%;
             text-align: left;
