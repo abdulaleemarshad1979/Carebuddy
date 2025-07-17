@@ -1,19 +1,17 @@
 import streamlit as st
 import pdfplumber
 import requests
-from dotenv import load_dotenv
 import os
 from PIL import Image
 import pytesseract
 from collections import deque
 import datetime
 
-# ---------- Load API Key ----------
-load_dotenv()
-api_key = os.getenv("OPENROUTER_API_KEY")
+# ---------- Load API Key from Streamlit Secrets ----------
+api_key = st.secrets["OPENROUTER_API_KEY"]
 
 if not api_key:
-    st.error("❌ OpenRouter API key not found. Please check your .env file.")
+    st.error("❌ OpenRouter API key not found. Please add it to Streamlit Cloud Secrets.")
     st.stop()
 
 # ---------- Page Config ----------
@@ -32,12 +30,9 @@ st.info("👋 Welcome! Upload a report or ask your health-related question below
 st.markdown(
     """
     <style>
-        /* Pleasant Background Gradient */
         body, .main {
             background-image: linear-gradient(180deg, #E0F7FA 0%, #FFFFFF 100%);
         }
-
-        /* Title and Subtitle Styling */
         .title {
             text-align: center;
             color: #01579B;
@@ -54,8 +49,6 @@ st.markdown(
         hr {
             border: 1px solid #B0BEC5;
         }
-
-        /* Chat Bubble Styling */
         .bubble-user {
             background-color: #0288D1;
             color: white;
@@ -84,7 +77,6 @@ st.markdown(
             gap: 15px;
             padding-bottom: 20px;
         }
-
         .stButton>button {
             width: 100%;
             text-align: left;
@@ -181,7 +173,6 @@ with st.sidebar:
         st.session_state.recent_searches.clear()
         st.rerun()
 
-    # NEW: Download Chat History Button
     if st.session_state.messages:
         chat_history_str = "\n\n".join(
             f"{msg['role'].title()}:\n{msg['content']}" for msg in st.session_state.messages
