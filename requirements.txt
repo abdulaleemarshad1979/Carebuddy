@@ -3,4 +3,4 @@ requests
 python-dotenv
 pillow
 pytesseract
-PyMuPDF==1.23.7
+pdfplumber
